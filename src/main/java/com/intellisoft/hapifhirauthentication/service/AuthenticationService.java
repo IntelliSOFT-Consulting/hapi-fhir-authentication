@@ -6,7 +6,7 @@ import com.intellisoft.hapifhirauthentication.exceptions.NotAuthorizedException;
 
 public interface AuthenticationService {
 
-    public AccessToken login(KeycloakUser user) throws NotAuthorizedException;
+    AccessToken login(KeycloakUser user) throws NotAuthorizedException;
 
-    public String user(String token) throws NotAuthorizedException;
+    String user(String token) throws NotAuthorizedException;
 }

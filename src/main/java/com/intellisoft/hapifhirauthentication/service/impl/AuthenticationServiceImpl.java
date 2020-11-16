@@ -3,22 +3,23 @@ package com.intellisoft.hapifhirauthentication.service.impl;
 import com.intellisoft.hapifhirauthentication.domains.KeycloakUser;
 import com.intellisoft.hapifhirauthentication.exceptions.NotAuthorizedException;
 import com.intellisoft.hapifhirauthentication.service.AuthenticationService;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpStatus;
 import org.keycloak.representations.AccessToken;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Objects;
 
 @Slf4j
-@Component
+@Service
+@EnableAutoConfiguration
 public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Value("${keycloak.url}")
@@ -30,7 +31,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Value("${keycloak.client_id}")
     private String keycloakClientId;
 
-    @Setter
     RestTemplate restTemplate = new RestTemplate();
 
     private static final String BEARER = "BEARER ";
@@ -88,5 +88,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         log.debug("User info: {}", Objects.requireNonNull(response.getBody()).getPreferredUsername());
         return response.getBody().getPreferredUsername();
+    }
+
+    public void setRestTemplate(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
     }
 }
