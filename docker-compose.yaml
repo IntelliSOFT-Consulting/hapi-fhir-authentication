@@ -1,0 +1,12 @@
+version: "3"
+services:
+  auth:
+    image: intellisoft/hapi-auth:v1
+    container_name: auth
+    environment:
+      KEYCLOAK_URL: ${KEYCLOAK_URL}
+      KEYCLOAK_REALM: ${KEYCLOAK_REALM}
+      KEYCLOAK_CLIENT_ID: ${KEYCLOAK_CLIENT_ID}
+    ports:
+      - 8084:8084
+    restart: always
