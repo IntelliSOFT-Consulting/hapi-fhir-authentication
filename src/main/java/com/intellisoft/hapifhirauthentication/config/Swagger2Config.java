@@ -1,3 +1,17 @@
+/*
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of
+ * the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * See theGNU Affero General Public License for more details.
+ * You should have received a copy of the GNU Affero
+ * General Public License along with this program.
+ */
 package com.intellisoft.hapifhirauthentication.config;
 
 import org.springframework.context.annotation.Bean;
@@ -15,6 +29,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class Swagger2Config {
+
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).select()
@@ -26,12 +41,13 @@ public class Swagger2Config {
 
     private ApiInfo apiEndPointsInfo() {
 
-        return new ApiInfoBuilder().title("KeyCloak Auth Rest API")
-                .description("Rest API for ")
+        return new ApiInfoBuilder()
+                .title("HAPI FHIR Authentication Rest API")
+                .description("Rest APIs for hapi fhir authentication")
                 .contact(new Contact("Intellisoft Kenya", "", ""))
-                .license("Apache 2.0")
-                .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
-                .version("1.0.0")
+                .license("The GNU General Public License")
+                .licenseUrl("http://www.gnu.org/licenses/")
+                .version("0.0.1-SNAPSHOT")
                 .build();
     }
 
